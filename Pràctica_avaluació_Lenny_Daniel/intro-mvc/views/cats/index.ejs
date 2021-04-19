@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All the cats</title>
+</head>
+
+<body>
+    <h1>List of all available cats</h1>
+    <% if (cats.length==0) { %>
+        <h3>There are no cats for the given race: <%= race %>
+        </h3>
+        <% } else { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Race</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cats.forEach( (cat)=> { %>
+                        <tr>
+                            <td>
+                                <%= cat.name %>
+                            </td>
+                            <td>
+                                <%= cat.race %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+            <% } %>
+
+</body>
+
+</html>

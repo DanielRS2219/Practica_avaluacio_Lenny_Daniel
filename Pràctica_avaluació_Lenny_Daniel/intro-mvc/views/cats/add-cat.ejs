@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All the cats</title>
+</head>
+
+<body>
+    <form action="/cats/add-cat" method="POST">
+        <fieldset>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+            <label for="race">Race</label>
+            <select id="race" name="race">
+                <option value="Vulgaris">Vulgaris</option>
+                <option value="Red">Red</option>
+                <option value="Carey">Carey</option>
+                <option value="Siamese">Siamese</option>
+            </select>
+            <input type="submit" value="Add">
+        </fieldset>
+    </form>
+</body>
+
+</html>
