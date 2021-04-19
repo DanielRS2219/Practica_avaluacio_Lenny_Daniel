@@ -25,9 +25,9 @@ router.get('/', catsController.getAllCats)
 router.get('/filter', catsController.getFilteredCats)
 
 // renderiza el formulario
-router.get('/add-cat', catsController.getAddCat)
+router.get('/add-img', catsController.getAddCat)
 
-router.post('/add-cat', catsController.postAddCat)
+router.post('/add-img', catsController.postAddCat)
 
 // Como estas rutas las quiero exportar a otras partes de la aplicación, las tengo que exponer
 module.exports = router

@@ -5,40 +5,37 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All the cats</title>
+    <title>Photo Gallery</title>
 </head>
 
 <body>
-    <h1>List of all available cats</h1>
+    <h1 style="background-color:lightblue ">
+        >The Best Photo Gallery ever!!</h1>
+
+    <b><a class="w3-bar-item w3-button" href="/cats" style="width: 15%;color:orange">Mostrar Imágenes</a></b>
+    <b><a class="w3-bar-item w3-button" href="cats/add-img" style="width: 15%;color:orange">Añadir Imagen</a></b>
+
     <% if (cats.length==0) { %>
-        <h3>There are no cats for the given race: <%= race %>
+        <h3>There are no images to show:
         </h3>
         <% } else { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Race</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% cats.forEach( (cat)=> { %>
-                        <tr>
-                            <td>
-                                <%= cat.name %>
-                            </td>
-                            <td>
-                                <%= cat.race %>
-                            </td>
-                        </tr>
-                        <% }); %>
-                </tbody>
-            </table>
+            <div>
+            <% cats.forEach( (cat)=> { %>
+                <div class="col-xs-12 col-sm-4">
+                    <div><b><a><%= cat.name %></a></b></div>
+                    <div><img src=<%= cat.url %> alt="Imagen"></div>
+                    <div><b></b><a><%= cat.date %></a></b></div>
+                </div>
+                <% }); %>
+            </div>
             <% } %>
 
-</body>
 
+</body>
 </html>

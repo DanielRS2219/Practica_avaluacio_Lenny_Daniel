@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+</head>
+
+<body>
+    <h1>The Best Photo Gallery ever!!</h1>
+    <a class="w3-bar-item w3-button" href="/cats" style="width: 15%;color:orange">Mostrar Imágenes</a>
+    <a class="w3-bar-item w3-button" href="/cats/add-img" style="width: 15%;color:orange">Añadir Imagen</a>
+    <form action="/cats/add-img" method="POST">
+        <fieldset>
+            <label for="name" >Name</label>
+            <input  pattern="[A-Za-z]{_}" maxlength="10" type="text" id="name" name="name" required>
+            <label for="url">URL</label>
+            <input type="url" name="url" id="url"
+            placeholder="https://example.com"
+            pattern="https://.*" 
+            required>
+            
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+            <input type="submit" value="Add">
+        </fieldset>
+    </form>
+
+    <% if (!error.includes('null')) { %>
+        <div id="resultado">
+            <p>La URL <%= error %> ja existeix al nostre magatzem, i per tant, no la podem afegir</p>
+        </div>
+    <% } %>
+
+</body>
+
+</html>
