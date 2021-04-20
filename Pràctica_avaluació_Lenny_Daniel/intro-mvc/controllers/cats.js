@@ -1,5 +1,11 @@
 
 const cats = require('../models/cats')
+const prominent = require('color.js')
+const AColorPicker = require('a-color-picker');
+const colorableDominant = require('colorable-dominant')
+//const splashy = require('splashy')()
+var color = require('dominant-color')
+const { getColorFromURL } = require('color-thief-node');
 
 exports.getAllCats = (req, res) => {  
 
@@ -7,10 +13,27 @@ exports.getAllCats = (req, res) => {
     const allCats = cats.findAll()
 
     for (let i = 0; i < allCats.length; i++) {
-        allCats[i].name = allCats[i].name.toUpperCase()
+        allCats[i].name = allCats[i].name.toUpperCase();
+        //allCats[i].predColor = prominent(allCats[i].url, { amount: 1 })
+        //allCats[i].predColor = AColorPicker.from(allCats[i].url);
+        //(async () => {
+        //    const predominantColors = await splashy.fromUrl(allCats[i].url)
+        //    const palette = colorableDominant(predominantColors) 
+        //    console.log(palette)
+        //})()
+        //prominent.prominent(allCats[i].url, { amount: 1 }).then(color => {
+        //    console.log(color) // [241, 221, 63]
+        //  })
+        //color(allCats[i].url, {format: 'rgb'}, function(err, color){
+        //    console.log(color) // ['91', '108', '110']
+        //  })
+        (async () => { 
+            allCats[i].predColor = await getColorFromURL(allCats[i].url);
+            console.log(dominantColor)
+        })();
     }
 
-    const orderAllcats = allCats.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+    const orderAllcats = allCats.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
     res.render('cats/index', {cats: orderAllcats})
 }

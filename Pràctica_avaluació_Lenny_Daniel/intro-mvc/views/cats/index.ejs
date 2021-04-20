@@ -28,9 +28,10 @@
             <div>
             <% cats.forEach( (cat)=> { %>
                 <div class="col-xs-12 col-sm-4">
-                    <div><b><a><%= cat.name %></a></b></div>
+                    <div><b><a><%= cat.name %> - <%= cat.date %></a></b></div>
                     <div><img src=<%= cat.url %> alt="Imagen"></div>
-                    <div><b></b><a><%= cat.date %></a></b></div>
+                    <div><h2 style="color:white; background-color: rgb(<%=cat.predColor%>)">
+                        <%= cat.predColor %></h2></div>
                 </div>
                 <% }); %>
             </div>
