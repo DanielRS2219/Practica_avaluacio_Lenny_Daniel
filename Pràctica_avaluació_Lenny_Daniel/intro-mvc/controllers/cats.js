@@ -3,37 +3,16 @@ const cats = require('../models/cats')
 const prominent = require('color.js')
 const AColorPicker = require('a-color-picker');
 const colorableDominant = require('colorable-dominant')
-//const splashy = require('splashy')()
 var color = require('dominant-color')
 const { getColorFromURL } = require('color-thief-node');
+const { all } = require('../routes/cats');
 
 exports.getAllCats = (req, res) => {  
 
     // el controlador va a obtener todos los datos del modelo 'cats'
     const allCats = cats.findAll()
 
-    for (let i = 0; i < allCats.length; i++) {
-        allCats[i].name = allCats[i].name.toUpperCase();
-        //allCats[i].predColor = prominent(allCats[i].url, { amount: 1 })
-        //allCats[i].predColor = AColorPicker.from(allCats[i].url);
-        //(async () => {
-        //    const predominantColors = await splashy.fromUrl(allCats[i].url)
-        //    const palette = colorableDominant(predominantColors) 
-        //    console.log(palette)
-        //})()
-        //prominent.prominent(allCats[i].url, { amount: 1 }).then(color => {
-        //    console.log(color) // [241, 221, 63]
-        //  })
-        //color(allCats[i].url, {format: 'rgb'}, function(err, color){
-        //    console.log(color) // ['91', '108', '110']
-        //  })
-        (async () => { 
-            allCats[i].predColor = await getColorFromURL(allCats[i].url);
-            console.log(dominantColor)
-        })();
-    }
-
-    const orderAllcats = allCats.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+    const orderAllcats = prepareList(allCats);
 
     res.render('cats/index', {cats: orderAllcats})
 }
@@ -74,6 +53,34 @@ exports.postAddCat = (req, res) => {
 
     // redirigir al cliente a la lista de gatos
     res.redirect('/cats')
+}
+
+exports.postRmCat = (req, res) => {
+    const id = req.body.id
+
+    const allCats = cats.findAll()
+
+    for (let i = 0; i < allCats.length; i++) {
+        if (allCats[i].id == id){
+            allCats.splice(i,1);
+        }
+    }
+    
+    res.redirect('/cats')
+}
+
+function prepareList(allCats) {
+    for (let i = 0; i < allCats.length; i++) {
+        allCats[i].name = allCats[i].name.toUpperCase();
+        (async () => { 
+            allCats[i].predColor = await getColorFromURL(allCats[i].url);
+            console.log(dominantColor)
+        })();
+    }
+
+    const orderAllcats = allCats.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+
+    return orderAllcats
 }
 
 function checkImageExists(url) {

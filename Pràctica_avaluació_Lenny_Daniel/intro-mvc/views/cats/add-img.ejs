@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="styles.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +14,14 @@
 </head>
 
 <body>
-    <h1>The Best Photo Gallery ever!!</h1>
-    <a class="w3-bar-item w3-button" href="/cats" style="width: 15%;color:orange">Mostrar Imágenes</a>
-    <a class="w3-bar-item w3-button" href="/cats/add-img" style="width: 15%;color:orange">Añadir Imagen</a>
+    <h1 style="background-color:lightblue ">
+        The Best Photo Gallery ever!!</h1>
+
+    <b><a class="w3-bar-item w3-button" href="/cats" style="width: 15%;color:orange">Mostrar Imágenes</a></b>
+    <b><a class="w3-bar-item w3-button" href="/cats/add-img" style="width: 15%;color:orange">Añadir Imagen</a></b>
+
     <form action="/cats/add-img" method="POST">
-        <fieldset>
+        <fieldset>  
             <label for="name" >Name</label>
             <input  pattern="[A-Za-z]{_}" maxlength="10" type="text" id="name" name="name" required>
             <label for="url">URL</label>

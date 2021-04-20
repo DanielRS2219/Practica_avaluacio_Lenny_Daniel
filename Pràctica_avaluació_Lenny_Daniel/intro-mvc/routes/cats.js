@@ -29,6 +29,8 @@ router.get('/add-img', catsController.getAddCat)
 
 router.post('/add-img', catsController.postAddCat)
 
+router.post('/rm-img', catsController.postRmCat)
+
 // Como estas rutas las quiero exportar a otras partes de la aplicación, las tengo que exponer
 module.exports = router
 

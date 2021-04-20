@@ -16,7 +16,7 @@
 
 <body>
     <h1 style="background-color:lightblue ">
-        >The Best Photo Gallery ever!!</h1>
+        The Best Photo Gallery ever!!</h1>
 
     <b><a class="w3-bar-item w3-button" href="/cats" style="width: 15%;color:orange">Mostrar Imágenes</a></b>
     <b><a class="w3-bar-item w3-button" href="cats/add-img" style="width: 15%;color:orange">Añadir Imagen</a></b>
@@ -25,13 +25,21 @@
         <h3>There are no images to show:
         </h3>
         <% } else { %>
-            <div>
+            <div> 
             <% cats.forEach( (cat)=> { %>
                 <div class="col-xs-12 col-sm-4">
-                    <div><b><a><%= cat.name %> - <%= cat.date %></a></b></div>
+                    <form action="/cats/rm-img" method="POST">
+                    <div><b><a style="font-size: 25px;" ><%= cat.name %> - <%= cat.date %></a></b>
+                        <div style="float: right; position: relative">
+                            <button style="background-color: white; border: none; padding-right: 0%;" name="id" value="<%= cat.id %>">
+                                <img width="20px" height="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Red_x.svg/1200px-Red_x.svg.png" >
+                            </button>
+                        </div>
+                    </div>
                     <div><img src=<%= cat.url %> alt="Imagen"></div>
                     <div><h2 style="color:white; background-color: rgb(<%=cat.predColor%>)">
                         <%= cat.predColor %></h2></div>
+                </form>
                 </div>
                 <% }); %>
             </div>
